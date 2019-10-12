@@ -1,7 +1,11 @@
 import argparse, sys, tqdm
 
 def main(prefix, dryRun, action, infile, outfile):
-    sys.stdout = outfile    # Make print() print to the right output stream
+    # Check that input has data and make print() print to outfile
+    sys.stdout = outfile
+    if infile.isatty():
+        print("ERROR: Input is a terminal, use a file or pipe data to stdin.")
+        exit(1)
     inputText = infile.read()
 
     # Do useful things
