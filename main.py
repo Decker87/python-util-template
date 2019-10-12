@@ -1,11 +1,18 @@
-import argparse, sys
+import argparse, sys, tqdm
 
 def main(prefix, dryRun, action, infile, outfile):
     sys.stdout = outfile    # Make print() print to the right output stream
     inputText = infile.read()
 
     # Do useful things
-    print(prefix + inputText.lower())
+    result = ""
+    result += prefix
+    for i in tqdm.tqdm(range(len(inputText))):
+        c = inputText[i]
+        result += c.lower()
+
+    # Print the output
+    print(result)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Convert input to lowercase and add a prefix.')
