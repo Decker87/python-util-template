@@ -15,6 +15,12 @@ def main(prefix, dryRun, action, infile, outfile):
         c = inputText[i]
         result += c.lower()
 
+    # If you need to use csv files:
+    # inRows = [row for row in csv.DictReader(infile)]
+    # writer = csv.DictWriter(outfile, fieldnames=headerStrings)
+    # writer.writeheader()
+    # writer.writerows(outRows)
+
     # Print the output
     print(result)
 
